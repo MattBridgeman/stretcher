@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stretcher</title>
+  <meta name="description" content="Akai S950 cyclic time-stretch emulator" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1a1a1a" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <h1>STRETCHER</h1>
+      <button id="install-btn" class="install-btn" hidden>Install ⬇</button>
+    </header>
+
+    <main>
+      <div id="dropzone" class="dropzone">
+        <p>Drop audio here or click to choose a file</p>
+        <input id="file-input" type="file" accept="audio/*" hidden />
+      </div>
+
+      <div class="waveforms">
+        <div class="waveform-row">
+          <label>Input</label>
+          <canvas id="input-waveform" height="60"></canvas>
+        </div>
+        <div class="waveform-row">
+          <label>Output</label>
+          <canvas id="output-waveform" height="60"></canvas>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label for="stretch">STRETCH %</label>
+          <input id="stretch" type="range" min="1" max="999" value="200" />
+          <span id="stretch-value" class="value">200</span>
+        </div>
+
+        <div class="control">
+          <label for="dtime">D-TIME</label>
+          <input id="dtime" type="range" min="1" max="2000" value="1000" />
+          <span id="dtime-value" class="value">1000</span>
+        </div>
+
+        <div class="control">
+          <label for="transpose">TRANSPOSE</label>
+          <input id="transpose" type="range" min="-36" max="36" value="0" />
+          <span id="transpose-value" class="value">0</span>
+        </div>
+
+        <div class="control toggle-group">
+          <label>MODE</label>
+          <div class="toggle">
+            <button id="mode-mono" class="toggle-btn active" data-mode="mono">MONO</button>
+            <button id="mode-poly" class="toggle-btn" data-mode="poly">POLY</button>
+          </div>
+        </div>
+
+        <div class="control toggle-group">
+          <label>AUTO-D</label>
+          <div class="toggle">
+            <button id="autod-on" class="toggle-btn" data-autod="on">ON</button>
+            <button id="autod-off" class="toggle-btn active" data-autod="off">OFF</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="preview-btn" disabled>▶ Preview</button>
+        <button id="export-btn" disabled>⬇ Export WAV</button>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="src/main.ts"></script>
+</body>
+</html>

@@ -35,11 +35,12 @@ Dev dependencies only: `vite`, `typescript`.
 ```
 stretcher/
 ├── index.html
-├── manifest.json
-├── sw.js                          # Service worker (cache-first)
-├── icons/
-│   ├── icon-192.png
-│   └── icon-512.png
+├── public/                        # Copied verbatim by Vite (unhashed)
+│   ├── manifest.json
+│   ├── sw.js                      # Service worker (cache-first)
+│   └── icons/
+│       ├── icon-192.png
+│       └── icon-512.png
 ├── src/
 │   ├── main.ts                    # Bootstrap, SW registration
 │   ├── algorithm/
