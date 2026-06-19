@@ -31,7 +31,12 @@ params = bindControls((next) => {
 });
 
 bindDropzone(dropzone, fileInput, async (file) => {
-  inputBuffer = await loadAudioFile(file);
+  try {
+    inputBuffer = await loadAudioFile(file);
+  } catch {
+    alert(`Couldn't read "${file.name}" — try a WAV or MP3 file.`);
+    return;
+  }
   drawWaveform(inputCanvas, inputBuffer);
   recompute();
 });
